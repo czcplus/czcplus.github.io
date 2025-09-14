@@ -156,6 +156,31 @@ const bannerOffset =
 
 		<!-- increase the page height during page transition to prevent the scrolling animation from jumping -->
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
+		<!-- 随机背景图功能 -->
+		<script>
+		const backgrounds = [
+			"/bg1.webp",
+			"/bg2.webp",
+			"/bg3.webp",
+			"/bg4.webp",
+			"/bg5.webp",
+			"/bg6.webp",
+			"/bg7.webp",
+			"/bg8.webp",
+			"/bg9.webp",
+			"/bg10.webp",
+			"/bg11.webp",
+			"/bg12.webp",
+			"/bg13.webp",
+			"/bg14.webp",
+			"/bg15.webp",
+			"/bg16.webp",
+			"/bg17.webp",
+			// https://cdn.jsdelivr.net/gh/czcplus/blog-source@main/love-yue/images/global/bg/
+		];
+		const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+		document.documentElement.style.setProperty("--bg-image", `url('${randomBg}')`);
+		</script>
 	</body>
 </html>
 
@@ -191,6 +216,87 @@ const bannerOffset =
 	.navbar-hidden {
 		@apply opacity-0 -translate-y-16
 	}
+}
+
+/* ========= 全局变量（方便统一调风格） ========= */
+:root{
+  --bg-image: url('/bg5.png');
+  --glass-bg: rgba(0,0,0,0.65);
+  --glass-bg-hover: rgba(0,0,0,0.75);
+  --glass-border: rgba(255,255,255,0.08);
+  --glass-blur: 12px;
+  --nav-blur: 10px;
+}
+
+/* ========= 底层全屏背景 ========= */
+html, body { background: transparent !important; }
+body { position: relative; }
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background: var(--bg-image) center/cover no-repeat fixed;
+  z-index: -1;
+}
+
+/* ========= “卡片基类”半透明 + 玻璃（命中你截图里所有 card-base） ========= */
+.card-base{
+  background: var(--glass-bg) !important;
+  backdrop-filter: saturate(160%) blur(var(--glass-blur));
+  -webkit-backdrop-filter: saturate(160%) blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+}
+
+/* hover 更实一点手感好 */
+.card-base:hover{
+  background: var(--glass-bg-hover) !important;
+}
+
+/* 顶部导航如果也用了 card-base，会自动跟随上面的效果；
+   想要稍微更浅，可单独微调： */
+header .card-base,
+#navbar .card-base,
+#navbar-wrapper .card-base{
+  backdrop-filter: blur(var(--nav-blur));
+  -webkit-backdrop-filter: blur(var(--nav-blur));
+}
+
+/* ========= 外层大容器保持完全透明（让底图可见） ========= */
+main,
+.container,
+.content,
+#main-grid,
+.page,
+.page-wrapper{
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+
+
+
+
+/* 3) 分页等小按钮：玻璃半透明 */
+.btn-card{
+  background: rgba(0, 0, 0, 0.45) !important;             /* 也可换成 var(--glass-bg) */
+  backdrop-filter: saturate(160%) blur(var(--glass-blur));
+  -webkit-backdrop-filter: saturate(160%) blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  transition: background .2s ease, transform .15s ease;
+}
+.btn-card:hover{
+  background: rgba(0, 0, 0, 0.55) !important;
+  transform: translateY(-1px);
+}
+.btn-card:active{
+  background: rgba(0, 0, 0, 0.44) !important;
+  transform: translateY(0);
+}
+
+/* 4) 右侧进入按钮里的箭头图标稍微压一点对比（可选） */
+.btn-regular svg{
+  opacity: .9;
 }
 </style>
 

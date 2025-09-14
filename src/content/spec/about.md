@@ -1,9 +1,13 @@
-# About
-This is the demo site for [Fuwari](https://github.com/saicaca/fuwari).
+# 网站声明
 
-::github{repo="saicaca/fuwari"}
+本网站仅用于记录我们的生活点滴，未经允许禁止对内容进行转载。
 
-> ### Sources of images used in this site
-> - [Unsplash](https://unsplash.com/)
-> - [星と少女](https://www.pixiv.net/artworks/108916539) by [Stella](https://www.pixiv.net/users/93273965)
-> - [Rabbit - v1.4 Showcase](https://civitai.com/posts/586908) by [Rabbit_YourMajesty](https://civitai.com/user/Rabbit_YourMajesty)
+
+
+在此特别感谢：
+
+* [Astro](https://astro.build/)提供的强大网站框架支持
+* [fuwari](https://github.com/saicaca/fuwari)提供的精美网页模板
+* [Github](https://github.com/)提供的代码存储及图床功能
+* [jsdelivr](https://cdn.jsdelivr.net)提供的CDN加速
+* [ChatGPT](https://chatgpt.com/)老师的辛勤指导
